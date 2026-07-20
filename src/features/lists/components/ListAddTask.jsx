@@ -8,7 +8,6 @@ function ListAddTask({ onCancel, listFilters }) {
   const [text, setText] = useState('');
   const inputRef = useRef(null);
 
-  // Extract tag filters from the list's filters
   const getTagFilters = () => {
     return listFilters
       .filter(filter => filter.type === 'tag')
@@ -16,7 +15,6 @@ function ListAddTask({ onCancel, listFilters }) {
   };
 
   useEffect(() => {
-    // Auto-focus input when component mounts
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -26,7 +24,6 @@ function ListAddTask({ onCancel, listFilters }) {
     e.preventDefault();
     if (!text.trim()) return;
     
-    // Pre-populate with the list's tag filters
     const tagFilters = getTagFilters();
     
     addTask({ 
@@ -45,7 +42,7 @@ function ListAddTask({ onCancel, listFilters }) {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Add a task to this list..."
+          placeholder="Adicione uma tarefa a esta lista..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           className="w-full py-2 px-4 pr-20 text-sm text-neutral-800 rounded-lg border border-neutral-200 focus:border-primary-400 focus:ring-1 focus:ring-primary-200 outline-hidden transition-all"
@@ -78,11 +75,10 @@ function ListAddTask({ onCancel, listFilters }) {
         </div>
       </div>
       
-      {/* Show tags that will be automatically applied */}
       {getTagFilters().length > 0 && (
         <div className="mt-2 mb-1 px-1" data-testid="auto-applied-tags">
           <p className="text-xs text-neutral-500">
-            Will be tagged with: 
+            Será marcada com: 
             <span className="font-medium ml-1 text-primary-600">
               {getTagFilters().join(', ')}
             </span>

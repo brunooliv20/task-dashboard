@@ -8,18 +8,12 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
   const [filters, setFilters] = useState(taskList.filters || []);
 
   const handleAddTagFilter = (tag) => {
-    // Check if the tag is already in filters
     if (filters.some(f => f.type === 'tag' && f.value === tag)) return;
-    
-    // Add the tag filter
     setFilters([...filters, { type: 'tag', value: tag }]);
   };
 
   const handleAddCompletionFilter = (isCompleted) => {
-    // Remove any existing completion filter
     const updatedFilters = filters.filter(f => f.type !== 'completed');
-    
-    // Add the new completion filter
     setFilters([...updatedFilters, { type: 'completed', value: isCompleted }]);
   };
 
@@ -31,33 +25,30 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
 
   const handleSave = () => {
     onSave({ title, filters });
-    // The modal should close after saving
   };
 
   return (
     <div className="task-list-config p-4" data-testid="task-list-config">
-      <h3 className="font-medium text-lg mb-4">Configure List</h3>
+      <h3 className="font-medium text-lg mb-4">Configurar Lista</h3>
       
-      {/* List title input */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="list-title">List Title</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-1" htmlFor="list-title">Título da Lista</label>
         <input
           id="list-title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="w-full px-3 py-2 border border-neutral-300 rounded-md focus:outline-hidden focus:ring-1 focus:ring-primary-500"
-          placeholder="Enter list title"
+          placeholder="Digite o título da lista"
           data-testid="list-title-input"
         />
       </div>
       
-      {/* Current filters */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-neutral-700 mb-1">Current Filters</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-1">Filtros Atuais</label>
         
         {filters.length === 0 ? (
-          <p className="text-sm text-neutral-500" data-testid="no-filters-message">No filters applied. This list will show all tasks.</p>
+          <p className="text-sm text-neutral-500" data-testid="no-filters-message">Nenhum filtro aplicado. Esta lista mostrará todas as tarefas.</p>
         ) : (
           <div className="flex flex-wrap gap-2" data-testid="filter-list">
             {filters.map((filter, index) => (
@@ -66,7 +57,7 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
                   <span>Tag: {filter.value}</span>
                 )}
                 {filter.type === 'completed' && (
-                  <span>Status: {filter.value ? 'Completed' : 'Active'}</span>
+                  <span>Status: {filter.value ? 'Completa' : 'Ativa'}</span>
                 )}
                 <button 
                   type="button"
@@ -82,11 +73,10 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
         )}
       </div>
       
-      {/* Add tag filter */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-neutral-700 mb-1">Filter by Tag</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-1">Filtrar por Tag</label>
         {tags.length === 0 ? (
-          <p className="text-sm text-neutral-500" data-testid="no-tags-available-message">No tags available. Add tags to tasks first.</p>
+          <p className="text-sm text-neutral-500" data-testid="no-tags-available-message">Nenhuma tag disponível. Adicione tags às tarefas primeiro.</p>
         ) : (
           <div className="flex flex-wrap gap-2" data-testid="available-tags">
             {tags.map((tag) => (
@@ -110,9 +100,8 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
         )}
       </div>
       
-      {/* Add completion filter */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-neutral-700 mb-1">Filter by Status</label>
+        <label className="block text-sm font-medium text-neutral-700 mb-1">Filtrar por Status</label>
         <div className="flex gap-2">
           <button
             type="button"
@@ -125,7 +114,7 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
               }`}
             data-testid="active-tasks-filter"
           >
-            Active Tasks
+            Tarefas Ativas
           </button>
           <button
             type="button"
@@ -138,12 +127,11 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
               }`}
             data-testid="completed-tasks-filter"
           >
-            Completed Tasks
+            Tarefas Completas
           </button>
         </div>
       </div>
       
-      {/* Actions */}
       <div className="flex justify-end gap-2">
         <button
           type="button"
@@ -151,7 +139,7 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
           className="px-4 py-2 border border-neutral-300 text-neutral-700 rounded-md hover:bg-neutral-50"
           data-testid="cancel-config"
         >
-          Cancel
+          Cancelar
         </button>
         <button
           type="button"
@@ -159,7 +147,7 @@ function TaskListConfig({ taskList, onSave, onCancel }) {
           className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700"
           data-testid="save-config"
         >
-          Save
+          Salvar
         </button>
       </div>
     </div>

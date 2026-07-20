@@ -26,7 +26,7 @@ function TaskList({ tasks }) {
             className="text-center text-neutral-500 py-4 font-medium"
             data-testid="empty-task-message"
           >
-            All tasks are complete!
+            Todas as tarefas foram completadas!
           </motion.p>
         )}
       </AnimatePresence>
