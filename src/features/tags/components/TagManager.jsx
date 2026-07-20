@@ -25,9 +25,7 @@ function TagManager({ onClose }) {
 
   const saveEditedTag = (originalTag) => {
     if (!editedTagName.trim()) return;
-    // Update in tag context
     editTag(originalTag, editedTagName.trim());
-    // Update in task context
     updateTasksWithEditedTag(originalTag, editedTagName.trim());
 
     setEditingTag(null);
@@ -35,16 +33,14 @@ function TagManager({ onClose }) {
   };
 
   const handleDeleteTag = (tag) => {
-    // Delete from tag context
     deleteTag(tag);
-    // Update tasks that have this tag
     updateTasksWithDeletedTag(tag);
   };
 
   return (
     <div className="tag-manager bg-white rounded-xl shadow-lg p-5" data-testid="tag-manager">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-medium text-neutral-800">Manage Tags</h3>
+        <h3 className="text-lg font-medium text-neutral-800">Gerenciar Tags</h3>
         <button
           className="p-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-full transition-colors"
           onClick={onClose}
@@ -54,7 +50,6 @@ function TagManager({ onClose }) {
         </button>
       </div>
 
-      {/* Add new tag */}
       <div className="mb-5">
         <div className="flex gap-2">
           <div className="relative grow">
@@ -63,7 +58,7 @@ function TagManager({ onClose }) {
             </div>
             <input
               type="text"
-              placeholder="Add a new tag"
+              placeholder="Adicione uma nova tag"
               value={newTagName}
               onChange={(e) => setNewTagName(e.target.value)}
               className="w-full py-2 px-4 pl-9 text-sm text-neutral-800 rounded-lg border border-neutral-300 focus:border-primary-400 focus:ring-1 focus:ring-primary-200 outline-hidden transition-all"
@@ -86,10 +81,9 @@ function TagManager({ onClose }) {
         </div>
       </div>
 
-      {/* Tag list */}
       <div className="flex flex-col gap-2 max-h-64 overflow-y-auto" data-testid="tag-list">
         {tags.length === 0 ? (
-          <p className="text-center text-neutral-500 py-3" data-testid="no-tags-message">No tags yet</p>
+          <p className="text-center text-neutral-500 py-3" data-testid="no-tags-message">Nenhuma tag ainda</p>
         ) : (
           tags.map((tag, index) => (
             <div 

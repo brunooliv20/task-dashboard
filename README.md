@@ -1,105 +1,105 @@
-# Task Dashboard
+# Painel de Tarefas
 
-A task management application that allows users to create, organize, and filter tasks using a modern, responsive UI built with React.
+Uma aplicação de gerenciamento de tarefas que permite aos usuários criar, organizar e filtrar tarefas usando uma interface moderna e responsiva construída com React.
 
-> **Note:** This application is intended for demonstration purposes only and is not meant for production use.
+> **Nota:** Esta aplicação é destinada apenas para fins de demonstração e não se destina ao uso em produção.
 
-## Features
+## Recursos
 
-- **Task Management**: Create, complete, and delete tasks
-- **Task Tags**: Organize tasks with customizable tags
-- **Task Lists**: Create multiple lists with custom filters
-- **List Filters**: Filter tasks by tags or completion status
-- **Animations**: Smooth transitions and animations using Framer Motion
-- **Responsive Design**: Works on desktop and mobile devices
+- **Gerenciamento de Tarefas**: Criar, completar e deletar tarefas
+- **Tags de Tarefas**: Organizar tarefas com tags personalizáveis
+- **Listas de Tarefas**: Criar múltiplas listas com filtros personalizados
+- **Filtros de Lista**: Filtrar tarefas por tags ou status de conclusão
+- **Animações**: Transições suaves e animações usando Framer Motion
+- **Design Responsivo**: Funciona em dispositivos desktop e mobile
 
-## Technology Stack
+## Pilha Tecnológica
 
-- **React**: Modern React with functional components and hooks
-- **Tailwind CSS**: Utility-first CSS framework for styling
-- **Framer Motion**: Animation library for React
-- **Vite**: Fast, modern build tool and development server
-- **Vitest**: Testing framework compatible with Vite
+- **React**: React moderno com componentes funcionais e hooks
+- **Tailwind CSS**: Framework CSS first-utility para estilização
+- **Framer Motion**: Biblioteca de animação para React
+- **Vite**: Ferramenta de build rápida e moderna e servidor de desenvolvimento
+- **Vitest**: Framework de teste compatível com Vite
 
-## Getting Started
+## Começando
 
-### Prerequisites
+### Pré-requisitos
 
 - Node.js (v18+)
 - npm (v10+)
 
-### Installation
+### Instalação
 
-1. Clone the repository:
+1. Clone o repositório:
    ```bash
-   git clone https://github.com/yourusername/task-dashboard.git
-   cd task-dashboard
+   git clone https://github.com/seuusuario/painel-tarefas.git
+   cd painel-tarefas
    ```
 
-2. Install dependencies:
+2. Instale as dependências:
    ```bash
    npm install
    ```
 
-3. Start the development server:
+3. Inicie o servidor de desenvolvimento:
    ```bash
    npm start
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view the app
+4. Abra [http://localhost:3000](http://localhost:3000) para visualizar o aplicativo
 
-### Available Scripts
+### Scripts Disponíveis
 
-- `npm start` - Start the development server
-- `npm start:hydrated` - Start the development server with data hydration enabled
-- `npm run build` - Build for production
-- `npm run build:hydrated` - Build for production with data hydration enabled
-- `npm run build:clean` - Build for production with data hydration explicitly disabled
-- `npm run preview` - Preview the production build locally
-- `npm run preview:hydrated` - Preview the production build with data hydration enabled
-- `npm test` - Run tests with Vitest
+- `npm start` - Inicie o servidor de desenvolvimento
+- `npm start:hydrated` - Inicie o servidor de desenvolvimento com hidratação de dados ativada
+- `npm run build` - Crie para produção
+- `npm run build:hydrated` - Crie para produção com hidratação de dados ativada
+- `npm run build:clean` - Crie para produção com hidratação de dados explicitamente desativada
+- `npm run preview` - Visualize o build de produção localmente
+- `npm run preview:hydrated` - Visualize o build de produção com hidratação de dados ativada
+- `npm test` - Execute testes com Vitest
 
-### Data Hydration
+### Hidratação de Dados
 
-The application supports pre-populating the app with sample data through an optional hydration process:
+A aplicação oferece suporte a pré-preenchimento com dados de amostra através de um processo de hidratação opcional:
 
-- Sample data is defined in `src/data/initialData.json`
-- Hydration can be enabled/disabled using the `VITE_ENABLE_DATA_HYDRATION` environment variable
-- Use the convenience scripts for development with hydration:
-  - `npm run start:hydrated` - Development with sample data
-  - `npm run build:hydrated` - Production build with sample data
-  - `npm run build:clean` - Production build without sample data
-- GitHub Actions deployment automatically enables hydration for the production build
+- Os dados de amostra são definidos em `src/data/initialData.json`
+- A hidratação pode ser ativada/desativada usando a variável de ambiente `VITE_ENABLE_DATA_HYDRATION`
+- Use os scripts de conveniência para desenvolvimento com hidratação:
+  - `npm run start:hydrated` - Desenvolvimento com dados de amostra
+  - `npm run build:hydrated` - Build de produção com dados de amostra
+  - `npm run build:clean` - Build de produção sem dados de amostra
+- A implantação do GitHub Actions ativa automaticamente a hidratação para o build de produção
 
-## Architecture
+## Arquitetura
 
-### State Management
+### Gerenciamento de Estado
 
-The application uses React Context for state management:
+A aplicação usa React Context para gerenciamento de estado:
 
-- **TaskContext**: Manages tasks state and operations (add, toggle, delete)
-- **TagContext**: Manages tags and their relationships with tasks
-- **ListContext**: Manages task lists and filtering logic
+- **TaskContext**: Gerencia o estado de tarefas e operações (adicionar, alternar, deletar)
+- **TagContext**: Gerencia tags e suas relações com tarefas
+- **ListContext**: Gerencia listas de tarefas e lógica de filtragem
 
-### UI Components
+### Componentes da Interface
 
-The application features several key components:
-- **TaskList**: Renders a list of tasks
-- **TaskItem**: Renders an individual task
-- **TaskBoard**: Manages multiple task lists
-- **TagManager**: Interface for creating and managing tags
-- **GlobalTaskForm**: Form for creating new tasks
-- **ListAddTask**: Form for adding tasks to specific lists
-- **TaskListConfig**: Interface for configuring task lists
+A aplicação apresenta vários componentes-chave:
+- **TaskList**: Renderiza uma lista de tarefas
+- **TaskItem**: Renderiza uma tarefa individual
+- **TaskBoard**: Gerencia múltiplas listas de tarefas
+- **TagManager**: Interface para criar e gerenciar tags
+- **GlobalTaskForm**: Formulário para criar novas tarefas
+- **ListAddTask**: Formulário para adicionar tarefas a listas específicas
+- **TaskListConfig**: Interface para configurar listas de tarefas
 
-## Contributing
+## Contribuindo
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Faça fork do repositório
+2. Crie seu branch de feature (`git checkout -b feature/recurso-incrivel`)
+3. Faça commit das suas mudanças (`git commit -m 'Adicione algum recurso incrível'`)
+4. Faça push para o branch (`git push origin feature/recurso-incrivel`)
+5. Abra um Pull Request
 
-## License
+## Licença
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.

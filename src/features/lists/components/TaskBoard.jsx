@@ -18,63 +18,49 @@ function TaskBoard() {
   const [showTagManager, setShowTagManager] = useState(false);
   const [addingTaskToListId, setAddingTaskToListId] = useState(null);
 
-  // Start editing a task list's configuration
   const handleEditTaskList = (id) => {
     setEditingListId(id);
   };
 
-  // Handle tag management
   const handleManageTags = () => {
     setShowTagManager(true);
   };
   
-  // Handle adding a task to a specific list
   const handleAddTaskToList = (listId) => {
     setAddingTaskToListId(listId);
   };
 
-  // Complete all tasks in a specific list
   const handleCompleteListTasks = (listId) => {
     const list = taskLists.find(l => l.id === listId);
     if (!list) return;
     
-    // Get the tasks that are visible in this list based on its filters
     const filteredTasks = getFilteredTasks(list.filters, tasks);
-    
-    // Extract just the IDs of these filtered tasks to complete
     const filteredTaskIds = filteredTasks.map(task => task.id);
     
-    // Pass these IDs to the completeAllTasks function
     completeAllTasks(filteredTaskIds);
   };
 
-  // Delete completed tasks in a specific list
   const handleDeleteListCompletedTasks = (listId) => {
     const list = taskLists.find(l => l.id === listId);
     if (!list) return;
     
-    // Get the tasks that are visible in this list based on its filters
     const filteredTasks = getFilteredTasks(list.filters, tasks);
-    
-    // Extract just the IDs of the completed tasks in this filtered list
     const completedFilteredTaskIds = filteredTasks
       .filter(task => task.isCompleted)
       .map(task => task.id);
     
-    // Pass these IDs to the deleteCompletedTasks function
     deleteCompletedTasks(completedFilteredTaskIds);
   };
 
-  // Handle saving list configuration and closing the editor
   const handleSaveListConfig = (listId, updates) => {
     updateTaskList(listId, updates);
-    setEditingListId(null); // Close the editor after saving
+    setEditingListId(null);
   };
 
   return (
     <div className="task-board" data-testid="task-board">
       <div className="mb-4 flex justify-between items-center">
-        <h2 className="font-semibold text-lg text-neutral-700">Task Lists</h2>
+        <h2 className="font-semibold text-lg text-neutral-700">Listas de Tarefas</h2>
         <button 
           type="button"
           className="flex items-center text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors px-3 py-1.5 hover:bg-primary-50 rounded-lg"
@@ -82,11 +68,10 @@ function TaskBoard() {
           data-testid="manage-tags-button"
         >
           <TagIcon className="h-4 w-4 mr-2" />
-          Manage Tags
+          Gerenciar Tags
         </button>
       </div>
       
-      {/* Tag Manager Modal */}
       <AnimatePresence>
         {showTagManager && (
           <motion.div 
@@ -146,7 +131,7 @@ function TaskBoard() {
                         onClick={() => handleEditTaskList(list.id)}
                         data-testid={`edit-list-${list.id}`}
                       >
-                        Edit
+                        Editar
                       </button>
                       {list.id !== 'default' && (
                         <button 
@@ -155,14 +140,13 @@ function TaskBoard() {
                           onClick={() => deleteTaskList(list.id)}
                           data-testid={`delete-list-${list.id}`}
                         >
-                          Delete
+                          Deletar
                         </button>
                       )}
                     </div>
                   </div>
                   
                   <div className="list-body p-4 grow overflow-y-auto max-h-[50vh]">
-                    {/* Show add task form when adding to this list */}
                     {addingTaskToListId === list.id ? (
                       <div className="mb-3">
                         <ListAddTask 
@@ -178,14 +162,13 @@ function TaskBoard() {
                         data-testid={`add-task-to-list-${list.id}`}
                       >
                         <PlusIcon className="h-4 w-4 mr-1.5" />
-                        Add task to this list
+                        Adicionar tarefa a esta lista
                       </button>
                     )}
                     
                     <TaskList tasks={filteredTasks} />
                   </div>
                   
-                  {/* List action buttons */}
                   {filteredTasks.length > 0 && (
                     <div className="list-actions p-3 border-t border-neutral-100 flex justify-between">
                       <motion.button 
@@ -198,7 +181,7 @@ function TaskBoard() {
                         data-testid={`complete-all-${list.id}`}
                       >
                         <CheckCircleIcon className="h-3 w-3 mr-1" />
-                        Complete All
+                        Completar Tudo
                       </motion.button>
                       
                       <motion.button 
@@ -211,7 +194,7 @@ function TaskBoard() {
                         data-testid={`clear-completed-${list.id}`}
                       >
                         <TrashIcon className="h-3 w-3 mr-1" />
-                        Clear Completed
+                        Limpar Completas
                       </motion.button>
                     </div>
                   )}
@@ -221,7 +204,6 @@ function TaskBoard() {
           );
         })}
 
-        {/* Add new task list button */}
         <motion.button
           type="button"
           className="add-list-button h-48 rounded-xl border-2 border-dashed border-neutral-200 flex flex-col items-center justify-center text-neutral-400 hover:text-primary-600 hover:border-primary-300 transition-colors"
@@ -231,7 +213,7 @@ function TaskBoard() {
           data-testid="add-list-button"
         >
           <PlusIcon className="h-10 w-10" />
-          <span className="mt-2 font-medium">Add New List</span>
+          <span className="mt-2 font-medium">Adicionar Nova Lista</span>
         </motion.button>
       </div>
     </div>

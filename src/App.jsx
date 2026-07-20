@@ -26,7 +26,7 @@ function App() {
                 data-testid="app-header"
               >
                 <div className="flex justify-between items-center mb-6">
-                  <h1 className="text-3xl font-bold text-neutral-800 tracking-tight">Task Dashboard</h1>
+                  <h1 className="text-3xl font-bold text-neutral-800 tracking-tight">Painel de Tarefas</h1>
                   {/* Stats will be displayed from TaskContext */}
                 </div>
                 
@@ -51,7 +51,7 @@ function App() {
                       data-testid="show-task-form-button"
                     >
                       <PlusIcon className="h-5 w-5 mr-2" />
-                      Add New Task
+                      Adicionar Nova Tarefa
                     </motion.button>
                   )}
                 </AnimatePresence>

@@ -77,7 +77,7 @@ function GlobalTaskForm({ onCancel }) {
         <input
           ref={inputRef}
           type="text"
-          placeholder="What needs to be done?"
+          placeholder="O que precisa ser feito?"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="w-full py-3 px-4 pr-24 text-neutral-800 rounded-lg border border-neutral-200 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-hidden transition-all"
@@ -118,7 +118,7 @@ function GlobalTaskForm({ onCancel }) {
           </div>
           <input
             type="text"
-            placeholder="Enter a new tag (press Enter or comma to add)"
+            placeholder="Digite uma nova tag (pressione Enter ou vírgula para adicionar)"
             value={newTagInput}
             onChange={(e) => setNewTagInput(e.target.value)}
             onKeyDown={handleTagKeyDown}
@@ -143,7 +143,7 @@ function GlobalTaskForm({ onCancel }) {
         {/* Matching tag suggestions - only shown when input matches existing tags */}
         {getMatchingTags().length > 0 && (
           <div className="mt-2" data-testid="tag-suggestions">
-            <p className="text-xs font-medium text-neutral-500 mb-1.5">Select matching tag:</p>
+            <p className="text-xs font-medium text-neutral-500 mb-1.5">Selecione a tag correspondente:</p>
             <div className="flex flex-wrap gap-2">
               {getMatchingTags().map((tag, index) => (
                 <button
@@ -165,7 +165,7 @@ function GlobalTaskForm({ onCancel }) {
       {/* Selected tags display */}
       {selectedTags.length > 0 && (
         <div className="mb-1" data-testid="selected-tags">
-          <p className="text-xs font-medium text-neutral-500 mb-2">Selected tags:</p>
+          <p className="text-xs font-medium text-neutral-500 mb-2">Tags selecionadas:</p>
           <div className="flex flex-wrap gap-2 p-2 bg-neutral-50 rounded-lg">
             {selectedTags.map((tag, index) => (
               <div 
